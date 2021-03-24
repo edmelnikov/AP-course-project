@@ -1,0 +1,14 @@
+{%extends 'shop/base.html'%}
+
+{% block content %}
+<div class="main-background-containter">
+    <div class="layout-positioner">
+        <p class="main-header">Добро пожаловать на myStore.</p>
+        <p class="main-message"></p>
+        <div class="main-button-wrapper">
+                <a class="stock-button" href="{% url 'catalogue' %}">Наш каталог</a>
+                <a class="about-button" href="{% url 'index' %}">Немного о нас</a>
+        </div>
+    </div>
+</div>
+{%endblock%}

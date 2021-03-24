@@ -1,0 +1,448 @@
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+    background-color: lightgray;
+  /*  Пример подключения изображения из папки  img */
+  /*url("../img/bg-promo.png"); */
+  background-repeat: no-repeat;
+  background-position: center top;
+    margin-bottom: -100px;
+}
+a:visited{
+    color: black;
+}
+.clearfix:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.layout-positioner {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*Чиним скроллбар*/
+html {
+  overflow-x: hidden;
+  margin-right: calc(-1 * (100vw - 100%));
+}
+
+/*Оформление навигации*/
+.navibar-container {
+    background-color: gray;
+    height: 48px;
+    margin-top: -17px;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+.navibar {
+    list-style: none;
+    margin-left: 100px;
+}
+
+.navibar li {
+    display:inline-block;
+    margin-right: 25px;
+}
+.navibar a, .navibar .logo {
+    vertical-align: middle;
+    display: block;
+    padding: 8px 10px;
+    padding-top: 11px;
+    padding-bottom: 0px;
+    margin-top: 5px;
+    height:30px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 2px solid lightgreen;
+}
+.navibar a:hover {
+    background-color: darkgrey;
+} 
+.navibar a:focus {
+    background-color: darkgrey;
+} 
+.navibar .active{
+    background-color: dimgrey;
+    border-bottom: 2px solid limegreen;
+}
+.navibar a.active:hover {
+    background-color: dimgrey;
+}
+.navibar a.active:focus {
+    background-color: dimgrey;
+} 
+
+/*Еще одна навигация (нужна ли она?)*/
+
+.anothernavi-container {
+    width: 600px;
+    margin-top: 25px;
+}
+.anothernavi-container a, .anothernavi-container span {
+    display: inline-block;
+}
+.anothernavi-container a {
+    color: black;
+}
+.anothernavi-container .inactive {
+    color: gray;
+}
+/*Лого*/
+
+.logo {
+    position: absolute;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    top: 5px;
+    left: 300px;
+}
+.logo-since {
+    position: absolute;
+    color: white;
+    font-size: 10px;
+    top: 22px;
+    left: 370px;
+}
+
+/*Подвал*/
+.footer {
+
+    margin-top: 50px;
+    background-color: grey;
+    height: 200px;
+    width: 100%;
+    margin-left: -8px;
+    padding-bottom: -10px;
+    position: absolute;
+    bottom: 0;
+}
+.footer .footer-menu, .footer .footer-contacts, .footer .footer-logo {
+    display: inline-block;
+    color: white;
+    margin-left: 40px;
+    font-size: 12px;
+}
+.footer .footer-menu a {
+    color: white;
+}
+.footer .footer-menu {
+    margin-lefT: 110px;
+}
+.footer .footer-contacts{
+    text-align: center;
+    margin-lefT: 80px;
+    position: relative;
+    top: -60px;
+}
+.footer .footer-logo-primary {
+    font-size: 60px;
+    font-weight: bold;
+    position: relative;
+    top: -60px;
+}
+.footer .footer-logo-secondary {
+    position: relative;
+    font-size: 20px;
+    top: -50px;
+    left: 140px;
+}
+.footer .copyright {
+    position: relative;
+    left: 120px;
+}
+/*Оформление главной страницы*/ 
+.main-background-containter {
+    margin-top: 180px;
+    background-color: white;
+    /*background-image: url("../img/main_bg.jpg");*/
+    /*background-repeat: repeat;*/
+    background-size: cover;
+    /*background-size: 140px 100px;*/
+    margin-left: -7px;
+    margin-right: -7px;
+    height: 400px;
+    padding-top: 10px;
+    background-position: 0% 50%;
+}
+.main-header {
+    margin-left: 70px;
+    width: 100%;
+    font-size: 60px;
+    line-height: 60px;
+    color: gray;
+}
+.main-button-wrapper {
+    margin-left: 180px;
+    width: 1000px;
+    margin-top: 100px;
+}
+/* Кнопка каталог на главной*/
+.stock-button {
+    display: inline-block;
+    background-color: grey;
+    color: white;
+    text-decoration: none;
+    width: 250px;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-right: 130px;
+}
+.stock-button:visited, .about-button:visited {
+    color:white
+}
+/* Кнопка о нас на главной*/
+.about-button {
+    display: inline-block;
+    background-color: grey;
+    color: white;
+    text-decoration: none;
+    width: 250px;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+/*О нас*/
+.about-text-block {
+    background-color: white;
+    width: 1000px;
+    border-radius: 10px;
+    padding: 5px 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.contents {
+    text-align: center;
+}
+.contents li {
+    display: inline-block;
+    margin-right: 20px;
+    color: black;
+}
+.up-button {
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+    border-radius: 10px;
+    position:fixed;
+    left: 40px;
+    bottom: 230px;
+}
+.up-button a {
+    display: block;
+    line-height: 100px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 80px;
+    margin-top: -10px;
+}
+/*Ассортимент*/
+.stock-info {
+    background-color: white;
+    margin-top: 25px;
+    padding: 5px 25px;
+    border-radius: 10px;
+}
+.stock-info-mes {
+    font-size: 20px;
+}
+.stock-info-mes, h1 {
+    text-align: center;
+}
+.stock {
+    width: 925px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+/* Отдельный товар */
+.item {
+    display: inline-block;
+    width: 175px; 
+    height: 220px;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 37px;
+    margin-right: 37px;
+    padding-top: 25px;
+    padding-left: 25px;
+}
+.item:nth-child(4n) {
+    margin-right: 0;
+}
+.item .name {
+    display: block;
+    margin-right: 5px;
+    margin-top: -5px;
+}
+.item .price {
+    display: block;
+    margin-right: 25px;
+    text-align: right;
+    width: auto;
+}
+
+
+/*Страница товара */
+.product-container {
+    margin-top: 25px;
+}
+.product-image {
+    float: left;
+    background-color: white;
+    border-radius: 10px;
+}
+.product-name {
+    background-color: white;
+    width: 500px;
+    border-radius: 10px;
+    padding: 5px 25px;
+    font-size: 30px;
+    line-height: 30px;
+    float: right; 
+    text-align: center;
+    margin-top: 0;
+}
+.product-info {
+    background-color: white;
+    width: 500px;
+    border-radius: 10px;
+    padding: 5px 25px;  
+    float: right;
+    margin-top: -200px;
+    height: 300px;    
+}
+.buy-button {
+    display: block;
+    background-color: grey;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    padding: 5px 25px;  
+    color: white;
+    margin-top: 50px;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 25px;
+    text-decoration: none;
+}
+
+.comment-container {
+    margin-top: 50px;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.comment-header {
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    height: 30px;
+    font-size: 30px;
+    line-height: 30px;
+    padding: 5px 25px;
+
+}
+.comment-block {
+    margin-top: 25px;
+    height: 120px;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px 25px;
+}
+.comment-block .text {
+    display: block;
+    float: right;
+    width: 470px;
+}
+.comment-block img {
+    float: left;
+    margin-top: 0px;
+    margin-left: 20px;
+}
+.comment-block .name {
+    text-align: center;
+    display: block;
+    position: relative;
+    width: 110px;
+    /*background-color: black;*/
+    left: 0;
+    top: -5px;
+    font-weight: bold;
+}
+.comment-block .rating {
+    background-image: url("../img/star_rating2.png");    
+    width: 110px;
+    /*background-color: black;*/
+    height: 19px;
+    background-size: cover;
+    position: relative;
+    top: 75px;
+}
+.comment-1 .rating {
+    background-position: 0% 0%;
+}
+.comment-2 .rating{
+    background-position: 0% 52%;
+}
+.comment-3 .rating{
+    background-position: 0% 100%;
+}
+/*Страница картинки */
+
+.item1-img-page img {
+  width: 500px;
+  height: 500px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  margin:-250px 0 0 -250px;
+}
+
+/*Таблица */
+table {
+    margin-top: 50px;
+    border-collapse: collapse;
+    background: url("../img/table_background.png") no-repeat white;
+    background-position: top 53px left 0px;
+    background-size: 800px 432px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+table td, table th {
+    border: 2px solid black;
+    border-collapse: collapse;
+    height: 50px;
+    text-align: center;
+    width: 200px;
+}
+table th:nth-child(2) {
+    background: url("../img/russia.png") no-repeat white;
+    background-position: top -23px left 0px;
+    background-size: 200px 100px;
+}
+table th:nth-child(3) {
+    background: url("../img/europe.png") no-repeat white;
+    background-position: top -23px left 0px;
+    background-size: 200px 100px;
+}
+table th:nth-child(4) {
+    background: url("../img/england.png") no-repeat white;
+    background-position: top -25px left 0px;
+    background-size: 200px 100px;
+}
+table a {
+    display: block;
+    text-decoration: none;
+    color: black;
+}

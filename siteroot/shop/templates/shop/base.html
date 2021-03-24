@@ -1,0 +1,58 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}">
+
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>myStore</title>
+
+    </head>
+    <body>
+        <div class="navibar-container">
+            <div class="layout-positioner">
+                <div class="logo">myStore</div>
+                <div class="logo-since">since 2019</div>
+                <ul class="navibar">
+                    <li><a href="{% url 'index' %}">Главная</a></li>
+                    <li><a href="{%url 'catalogue' %}">Каталог</a></li>
+                    <li><a href="about_us.html">О нас</a></li>
+                    <li><a href="about_us.html#contacts">Контакты</a></li>
+                    <li><a href="table.html">Таблица размеров</a></li>
+                    <li><a href="#" onClick="openmap()">Как проехать?</a></li>
+                </ul>
+            </div>
+        </div>
+
+        {% block content %}{%endblock%}
+
+        <div class="footer">
+            <div class="layout-positioner">
+                <div class="footer-menu">
+                    <ul><b>Меню:</b>
+                        <li><a href="{% url 'index' %}">Главная</a></li>
+                        <li><a href="{% url 'catalogue' %}">Каталог</a></li>
+                        <li><a href="about_us.html">О нас</a></li>
+                        <li><a href="about_us.html#contacts">Контакты</a></li>
+                        <li><a href="table.html">Таблица размеров</a></li>
+                        <li><a href="#" onClick="openmap()">Как проехать?</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <b>Контакты</b>
+                    <br>
+                    Почта: edmelnikov_1@edu.hse.ru
+                    <br>
+                    Телефон: +7-951-909-57-04
+                    <br>
+                    Адрес: Нижний Новгород, пр. Гагарина, 1
+                </div>
+                <div class="footer-logo">
+                    <div class="footer-logo-primary">myStore</div>
+                    <div class="footer-logo-secondary">since 2019</div>
+                    <div class="copyright">&copy; 2019 Melnikov E. D.</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
