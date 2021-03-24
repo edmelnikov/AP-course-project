@@ -1,0 +1,66 @@
+{%extends 'shop/base.html'%}
+
+{% block content %}
+        <!--<a href="stock.html" class="back-button">Назад к каталогу</a>-->
+        <div class="layout-positioner">
+            <div class="anothernavi-container">
+                <a href="{% url 'index' %}">Главная</a>
+                <span>&nbsp; &gt; &nbsp;</span>
+                <a href="{% url 'catalogue' %}">Каталог</a>
+                <span>&nbsp; &gt; &nbsp;</span>
+                <a class="inactive">Футболка красная</a>
+            </div>
+            <div class="product-container">
+                <div class="clearfix">                    
+                        <img src="img/item1.png" class="product-image" alt="товар" height="300" width="300" title="{{ product.title }}">
+                    <p class= "product-name">{{ product.title }}</p>
+                </div>
+                <span class="product-info "><b>Информация о товаре:</b>
+                    <ul>
+                        <li>Подходит под все</li>
+                        <li>Круглый вырез</li>
+                        <li>Рукава узкого кроя</li>
+                        <li>Облегающий крой</li>
+                        <li>Унисекс</li>
+                    </ul>
+                    <b>Материалы:</b> 97% хлопок, 3% эластан.
+                    <br>
+                    <br>
+                    <label for="razmer">Выберите размер:</label>
+                    <select name="size" id="razmer">
+                        <option value="xs">XS</option>
+                        <option value="s">S</option>
+                        <option value="m">M</option>
+                        <option value="l">L</option>
+                        <option value="xl">XL</option>
+                        <option value="xxl">XXL</option>
+                    </select>
+                    <form>
+                        <input type="button" value="Подобрать размер" onClick="sizes()">
+                    </form>
+                </span>            
+                <a class="buy-button">Купить<br><b>{{ product.price }}</b></a>
+            </div>
+            <div class="comment-container">
+                <div class="comment-header">Отзывы</div>
+                <div class="comment-block comment-1">
+                    <span class="name">Алексей</span>
+                    <a href="big_avatar_page.html"><img class="avatar" src="img/uni_avatar.png" height="70" width="70"></a>
+                    <span class="text">Футболка хорошая, качественная. Нитки не торчат. Доставили в срок. Хотелось бы расширения ассортимента. </span>
+                    <div class="rating"></div>
+                </div>
+                <div class="comment-block comment-2">
+                    <span class="name">Елена</span>
+                    <a href="big_avatar_page.html"><img class="avatar" src="img/uni_avatar.png" height="70" width="70"></a>
+                    <span class="text">Доставка быстрая и бесплатная, хорошая цена, но качество футболки оставляет желать лучшего. Но все же учитывая цену, дешево и сердито.</span>
+                    <div class="rating"></div>
+                </div>
+                <div class="comment-block comment-3">
+                    <span class="name">Петр</span>
+                    <a href="big_avatar1_page.html"><img class="avatar" src="img/avatar1.png" height="70" width="70"></a>
+                    <span class="text">Качество ужасное, после первой стирки футболка поблекла, и на ней появились катышки. С доставкой также возникли проблемы - перепутали адрес.</span>
+                    <div class="rating"></div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

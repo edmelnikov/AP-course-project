@@ -16,7 +16,7 @@
 
         <div class="item">
             <img src="img/item1.png" alt="{{ product.title }}" height="150" width="150">
-            <p class="name">{{ product.title }}</p>
+            <a href="{% url 'product_by_id' product.id %}" class="name">{{ product.title }}</a>
             <p class="price"><b>{{ product.price }}</b></p>
         </div>
 
