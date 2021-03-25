@@ -9,7 +9,6 @@ body {
   /*url("../img/bg-promo.png"); */
   background-repeat: no-repeat;
   background-position: center top;
-    margin-bottom: -100px;
 }
 a:visited{
     color: black;
@@ -99,14 +98,13 @@ html {
     font-size: 30px;
     font-weight: bold;
     top: 5px;
-    left: 300px;
 }
 .logo-since {
     position: absolute;
     color: white;
     font-size: 10px;
     top: 22px;
-    left: 370px;
+	margin-left: 70px;
 }
 
 /*Подвал*/
@@ -131,7 +129,7 @@ html {
     color: white;
 }
 .footer .footer-menu {
-    margin-lefT: 110px;
+    margin-left: 110px;
 }
 .footer .footer-contacts{
     text-align: center;
@@ -360,35 +358,22 @@ html {
 .comment-block .text {
     display: block;
     float: right;
-    margin-top: -20px;
     width: 470px;
 }
-/*
 .comment-block img {
     float: left;
     margin-top: 0px;
     margin-left: 20px;
-}*/
+}
 .comment-block .name {
     text-align: center;
     display: block;
     position: relative;
     width: 110px;
-    font-size: 20px;
+    /*background-color: black;*/
     left: 0;
-    top: 45px;
+    top: -5px;
     font-weight: bold;
-}
-
-.comment_textarea {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 25px;
-}
-.comment-block .created_at{
-    font-size: 12px;
-    position: relative;
-    top: 55px;
 }
 .comment-block .rating {
     background-image: url("../img/star_rating2.png");    
@@ -398,8 +383,6 @@ html {
     background-size: cover;
     position: relative;
     top: 75px;
-    left: 300px;
-    font-size: 20px;
 }
 .comment-1 .rating {
     background-position: 0% 0%;
