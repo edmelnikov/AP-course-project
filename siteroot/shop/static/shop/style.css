@@ -360,22 +360,35 @@ html {
 .comment-block .text {
     display: block;
     float: right;
+    margin-top: -20px;
     width: 470px;
 }
+/*
 .comment-block img {
     float: left;
     margin-top: 0px;
     margin-left: 20px;
-}
+}*/
 .comment-block .name {
     text-align: center;
     display: block;
     position: relative;
     width: 110px;
-    /*background-color: black;*/
+    font-size: 20px;
     left: 0;
-    top: -5px;
+    top: 45px;
     font-weight: bold;
+}
+
+.comment_textarea {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 25px;
+}
+.comment-block .created_at{
+    font-size: 12px;
+    position: relative;
+    top: 55px;
 }
 .comment-block .rating {
     background-image: url("../img/star_rating2.png");    
@@ -385,6 +398,8 @@ html {
     background-size: cover;
     position: relative;
     top: 75px;
+    left: 300px;
+    font-size: 20px;
 }
 .comment-1 .rating {
     background-position: 0% 0%;

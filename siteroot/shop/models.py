@@ -14,7 +14,7 @@ class Product(Model):
         return str(self.title)
 
 
-class ProductReview(Model):
+class Review(Model):
     product_key = ForeignKey(Product, on_delete=CASCADE)
 
     author = CharField(max_length=50)
