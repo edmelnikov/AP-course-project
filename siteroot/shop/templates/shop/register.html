@@ -1,0 +1,26 @@
+<!-- this one is wip -->
+
+{%extends 'shop/base.html'%}
+
+{% block content %}
+<div class="layout-positioner">
+    <div class="register-form-container">
+        <div class="stock-info">
+            <h1>Регистрация</h1>
+        </div>
+
+        <form action="{}" method="POST">
+            {% csrf_token %}
+            Ваш ник: <input type="text" name="new_username"/>
+            Ваш пароль: <input type="password" name="new_password1"/>
+            Повторите пароль: <input type="password" name="new_password1"/>а
+
+
+        </form>
+
+    </div>
+
+    </div>
+</div>>
+
+{%endblock%}

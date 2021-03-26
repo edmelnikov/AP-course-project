@@ -1,0 +1,33 @@
+{%extends 'shop/base.html'%}
+
+{% block content %}
+<div class="layout-positioner">
+    <div class="register-login-form-container">
+        <div class="stock-info">
+            <h1>Вход в систему </h1>
+        </div>
+
+        {% if not user.is_authenticated %}
+        <form class="login" method="POST">
+            {% csrf_token %}
+            <table>{{ form }}</table> <!-- Тут надо поменять размеры полей -->s
+
+            <input class="login-button" type="submit" value="Login"/>
+        </form>
+
+        <div class='register-link' >
+            <p>Если у Вас еще нет учетной записи, вы можете зарегистрироваться: </p>
+            <br/>
+            <a href="">Регистрация</a>
+
+        </div>
+
+        {% else %}
+        <p>Как ты сюда попал, ты же уже вошел</p>
+        {% endif %}
+    </div>
+
+    </div>
+</div>>
+
+{%endblock%}

@@ -50,17 +50,23 @@
                 <div class="logo-since">since 2019</div>
                 <ul class="navibar">
                     <li><a href="{% url 'index' %}">Главная</a></li>
-                    <li><a href="{%url 'catalogue' %}">Каталог</a></li>
-                    <li><a href="about_us.html">О нас</a></li>
-                    <li><a href="about_us.html#contacts">Контакты</a></li>
-                    <li><a href="table.html">Таблица размеров</a></li>
+                    <li><a href="{% url 'catalogue' %}">Каталог</a></li>
+
+                    {% if user.is_authenticated %}
+                        <li><a href="">Избранное</a></li>
+                        <li><a href="">Выйти</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Войти</a></li>
+                        <li><a href="#" onClick="openmap()">Зарегистрироваться</a></li>
+                    {% endif %}
+
                     <li><a href="#" onClick="openmap()">Как проехать?</a></li>
                 </ul>
             </div>
         </div>
 
         {% block content %}{%endblock%}
-
+        <!--
         <div class="footer">
             <div class="layout-positioner">
                 <div class="footer-menu">
@@ -89,5 +95,6 @@
                 </div>
             </div>
         </div>
+        -->
     </body>
 </html>

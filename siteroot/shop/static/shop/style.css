@@ -1,3 +1,6 @@
+/* тут очень кривой, наполенный костылями css, который был написан еще в 2019м году,
+но теперь костылей тут еще больше, ибо я почти ничего не помню из html c css, а
+  запиливать стили для новых фич как-то надо */
 
 body {
   font-family: Arial, sans-serif;
@@ -408,6 +411,7 @@ html {
 }
 
 /*Таблица */
+/*
 table {
     margin-top: 50px;
     border-collapse: collapse;
@@ -444,4 +448,54 @@ table a {
     display: block;
     text-decoration: none;
     color: black;
+}
+*/
+
+form.login  {
+    margin-top: 100px;
+}
+
+form.login  table {
+    margin-top: 50px;
+    border-collapse: collapse;
+
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.register-login-form-container  {
+
+
+}
+
+.login-button {
+    display: block;
+    width: 500px;
+    height: 50px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.register-link {
+    text-align: center;
+    display: block;
+    width: 1000px;
+    height: 50px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 24px;
+}
+
+.please-login {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.comment_textarea {
+    margin-top: 25px;
 }

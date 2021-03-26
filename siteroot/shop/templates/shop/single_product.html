@@ -44,21 +44,25 @@
 
             <div class="comment-container">
                 <div class="comment-header">Отзывы</div>
-
+                {% if user.is_authenticated %}
                 <div class="comment_textarea">
                     <form action="{% url 'post_review' product.id %}" method="POST">
                         {% csrf_token %}
-                        <textarea name="text", maxlength="4096", rows="10", cols="90", placeholder="Ваш отзыв"></textarea>
+                        <textarea name="text", maxlength="4096", rows="10", cols="97", placeholder="Ваш отзыв"></textarea>
                         {% if text_error %}
                             <p style="color:red;">Please provide your review</p>
                         {% endif %}
-                        <input type="submit" value="Отправить комментарий"/>
+                        <input type="submit" value="Оставить отзыв"/>
                     </form>
                 </div>
                 
 				{% block comerr %}{% endblock %}
 
-                <!-- это должно подцепляться из базы -->
+                {% else %}
+
+                <p class="please-login"><a href="{% url 'login' %}">Войдите</a> в систему, чтобы оставить отзыв</p>
+
+                {% endif %}
                 {% for review in reviews %}
 
                 <div class="comment-block">
@@ -70,20 +74,7 @@
 
 
                 {% endfor %}
-                <!--
-                <div class="comment-block comment-2">
-                    <span class="name">Елена</span>
-                    <a href="big_avatar_page.html"><img class="avatar" src="img/uni_avatar.png" height="70" width="70"></a>
-                    <span class="text">Доставка быстрая и бесплатная, хорошая цена, но качество футболки оставляет желать лучшего. Но все же учитывая цену, дешево и сердито.</span>
-                    <div class="rating"></div>
-                </div>
-                <div class="comment-block comment-3">
-                    <span class="name">Петр</span>
-                    <a href="big_avatar1_page.html"><img class="avatar" src="img/avatar1.png" height="70" width="70"></a>
-                    <span class="text">Качество ужасное, после первой стирки футболка поблекла, и на ней появились катышки. С доставкой также возникли проблемы - перепутали адрес.</span>
-                    <div class="rating"></div>
-                </div>
-                -->
+
             </div>
         </div>
 {% endblock %}
