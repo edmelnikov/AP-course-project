@@ -9,6 +9,7 @@ body {
   /*url("../img/bg-promo.png"); */
   background-repeat: no-repeat;
   background-position: center top;
+  margin-bottom: 0
 }
 a:visited{
     color: black;
@@ -116,7 +117,7 @@ html {
     width: 100%;
     margin-left: -8px;
     padding-bottom: -10px;
-    position: absolute;
+    position: sticky;
     bottom: 0;
 }
 .footer .footer-menu, .footer .footer-contacts, .footer .footer-logo {
