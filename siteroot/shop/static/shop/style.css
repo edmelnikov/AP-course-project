@@ -499,4 +499,12 @@ form.login  table {
 
 .comment_textarea {
     margin-top: 25px;
+
+}
+
+.submit-review-container {
+
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 50px;
 }

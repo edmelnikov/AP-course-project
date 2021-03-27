@@ -15,7 +15,6 @@ def index(request):
 		name = request.user.username
 	else:
 		name = 'Аноним'
-
 	return render(request, 'shop/index.html', {'username_name': name})
 
 
@@ -24,31 +23,39 @@ def catalogue(request):
 	return render(request, 'shop/catalogue.html', {'products': products})
 
 
-def get_product(request, product_id):
+def single_product_page(request, product_id):
 	try:
 		product = Product.objects.get(id=product_id)
 	except:
 		raise Http404('Товар не найден :(')
-	
 	reviews = Review.objects.filter(product_key=product_id)
-	
-	return render(request, 'shop/single_product.html', {'product': product, 'reviews': reviews[::-1]})
 
+	text_error = None
+	rating_error = None
+	if request.method == 'POST':
+		text = request.POST['text']
+		rating = request.POST['rating']
+		if not text or text.isspace():
+			text_error = 'Пожалуйста, напишите отзыв'
 
-def print_review_error(request, product_id):
-	return render(request, 'shop/comment_error.html', {'product_id': product_id})
+		if int(rating) == 0:
+			rating_error = 'Пожалуйста, оцените товар'
 
+		if rating_error is not None or text_error is not None:
+			return render(request, 'shop/single_product.html', {'product': product,
+																'reviews': reviews[::-1],
+																'text_error': text_error,
+																'rating_error': rating_error})
+		else:
+			new_review = Review(product_key=product, review_text=text, rating=rating,
+								author=request.user.username).save()
+			return HttpResponseRedirect(reverse('product_by_id', kwargs={'product_id': product.id}))
 
-def post_review(request, product_id):
-	try:
-		product = Product.objects.get(id=product_id)
-	except:
-		raise Http404('Товар не найден :(')
-	if len(request.POST['text']) != 0:
-		new_review = Review(product_key=product, review_text=request.POST['text'], rating=4, author=request.user.username).save()  # заглушки в виде фиксированного рейтинга и имени
-	elif request.POST['text'] == '':
-		print_review_error(request, product_id)
-	return HttpResponseRedirect(reverse('product_by_id', kwargs={'product_id': product.id}))
+	else: # GET
+		return render(request, 'shop/single_product.html', {'product': product,
+														'reviews': reviews[::-1],
+														'text_error': text_error,
+														'rating_error': rating_error})
 
 
 def sign_up_page(request):

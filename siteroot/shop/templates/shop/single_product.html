@@ -46,13 +46,31 @@
                 <div class="comment-header">Отзывы</div>
                 {% if user.is_authenticated %}
                 <div class="comment_textarea">
-                    <form action="{% url 'post_review' product.id %}" method="POST">
+                    <form action="{% url 'product_by_id' product.id %}" method="POST">
                         {% csrf_token %}
                         <textarea name="text", maxlength="4096", rows="10", cols="97", placeholder="Ваш отзыв"></textarea>
                         {% if text_error %}
-                            <p style="color:red;">Please provide your review</p>
+                            <p style="color:red;">{{ text_error }}</p>
                         {% endif %}
-                        <input type="submit" value="Оставить отзыв"/>
+
+                        <div class="submit-review-container">
+
+                            Оценка:
+                            <select name="rating">
+                                <option value="0"></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+
+                            </select>
+                            /5
+                            {% if rating_error %}
+                                <p style="color:red;">{{ rating_error }}</p>
+                            {% endif %}
+                            <input type="submit" value="Оставить отзыв"/>
+                        </div>
                     </form>
                 </div>
                 
@@ -68,10 +86,9 @@
                 <div class="comment-block">
                     <span class="name">{{ review.author }}</span>
                     <span class="text">{{ review.review_text }}</span>
-                    <div class="rating">{{ review.rating }}/10</div>
+                    <div class="rating">{{ review.rating }}/5</div>
                     <span class="created_at">{{ review.created_at }}</span>
                 </div>
-
 
                 {% endfor %}
 
