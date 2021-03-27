@@ -3,7 +3,9 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from .models import *
 from django.urls import reverse
 from  django.contrib.auth import login, logout, authenticate
-from .forms import LoginForm
+from .forms import LoginForm, SignupForm
+from  django.contrib.auth.models import User
+
 
 # TODO: добавить ошибку 404, добавить ошибку при попытке запостить пустой отзыв
 
@@ -18,8 +20,8 @@ def index(request):
 
 
 def catalogue(request):
-    products = Product.objects.all()
-    return render(request, 'shop/catalogue.html', {'products': products})
+	products = Product.objects.all()
+	return render(request, 'shop/catalogue.html', {'products': products})
 
 
 def get_product(request, product_id):
@@ -43,14 +45,35 @@ def post_review(request, product_id):
 	except:
 		raise Http404('Товар не найден :(')
 	if len(request.POST['text']) != 0:
-		new_review = Review(product_key=product, review_text=request.POST['text'], rating=4, author='dude').save()  # заглушки в виде фиксированного рейтинга и имени
+		new_review = Review(product_key=product, review_text=request.POST['text'], rating=4, author=request.user.username).save()  # заглушки в виде фиксированного рейтинга и имени
 	elif request.POST['text'] == '':
 		print_review_error(request, product_id)
 	return HttpResponseRedirect(reverse('product_by_id', kwargs={'product_id': product.id}))
 
 
-def register_page(request):
-	return render(request, 'shop/register.html')
+def sign_up_page(request):
+	if request.method == 'POST':
+		form = SignupForm(request.POST)
+		if form.is_valid():
+			logout(request)
+			username = form.cleaned_data['username']
+			email = form.cleaned_data['email']
+			password = form.cleaned_data['password']
+			password_confirm = form.cleaned_data['password_confirm']
+			if User.objects.filter(username=username).exists():
+				form.add_error('username', 'This user already exists')
+
+			elif password != password_confirm:
+				form.add_error('password_confirm', 'Mismatch')
+			else:
+				new_user = User.objects.create_user(username=username, email=email, password=password)
+				login(request, new_user)
+				return redirect(reverse('index'))
+
+	elif request.method == 'GET':
+		form = SignupForm()
+
+	return render(request, 'shop/signup.html', {'form': form})
 
 
 def log_in_page(request):
@@ -74,3 +97,11 @@ def log_in_page(request):
 		form = LoginForm()
 
 	return render(request, 'shop/login.html', {'form': form})
+
+
+def log_out(request):
+	if request.user.is_authenticated:
+		logout(request)
+
+	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))  # возвращение на ту же страницу, из которой был совершен запрос
+

@@ -457,11 +457,12 @@ form.login  {
 
 form.login  table {
     margin-top: 50px;
-    border-collapse: collapse;
+
 
     width: 600px;
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid black;
 }
 
 .register-login-form-container  {
