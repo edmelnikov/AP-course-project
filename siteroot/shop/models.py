@@ -31,7 +31,7 @@ class Review(Model):
 
 
 class CartProd(Model):
-	user = ForeignKey(User, on_delete=CASCADE)
+	user = ForeignKey(User, on_delete=CASCADE, null=True)
 	cart = ForeignKey('Cart', on_delete=CASCADE, related_name='related_cart')
 	product = ForeignKey(Product, on_delete=CASCADE, null=True)
 	quantity = PositiveIntegerField(default=1)
