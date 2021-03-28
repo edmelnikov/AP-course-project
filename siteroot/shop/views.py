@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from .models import *
 from django.urls import reverse
-from  django.contrib.auth import login, logout, authenticate
+from  django.contrib.auth import login, logout, authenticate, get_user_model
 from .forms import LoginForm, SignupForm
 from  django.contrib.auth.models import User
+from .mixins import *
 
 
 # TODO: добавить ошибку 404, добавить ошибку при попытке запостить пустой отзыв
@@ -111,4 +111,58 @@ def log_out(request):
 		logout(request)
 
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))  # возвращение на ту же страницу, из которой был совершен запрос
+
+
+def recalculate_final_price(cart):
+	cart_data = cart.products.aggregate(models.Sum('total_price'), models.Count('id'))
+	if cart_data.get('total_price__sum'):
+		cart.final_price = cart_data['total_price__sum']
+	else:
+		cart.final_price = 0
+	cart.total_products = cart_data['id__count']
+	cart.save()
+
+
+class AddToCartView(CartMixin, View):
+	def get(self, request, *args, **kwargs):
+		product_id = kwargs.get('product_id')
+		product = Product.objects.get(id=product_id)
+		cart_prod, created = CartProd.objects.get_or_create(user=self.cart.owner, cart=self.cart,
+															object_id=product_id)
+		if created:
+			self.cart.products.add(cart_prod)
+		recalculate_final_price(self.cart)
+		return HttpResponseRedirect('/cart/')
+
+
+class DeleteFromCartView(CartMixin, View):
+	def get(self, request, *args, **kwargs):
+		product_id = kwargs.get('product_id')
+		product = Product.objects.get(id=product_id)
+		cart_prod = CartProd.objects.get(user=self.cart.owner, cart=self.cart, object_id=product.id)
+		self.cart.products.remove(cart_prod)
+		cart_prod.delete()
+		recalculate_final_price(self.cart)
+		return HttpResponseRedirect('/cart/')
+
+
+class ChangeQuantityView(CartMixin, View):
+	def post(self, request, *args, **kwargs):
+		product_id = kwargs.get('product_id')
+		product = Product.objects.get(id=product_id)
+		cart_prod = CartProd.objects.get(user=self.cart.owner, cart=self.cart, object_id=product.id)
+		print(request.POST)
+		quantity = int(request.POST.get('quantity'))
+		cart_prod.quantity = quantity
+		cart_prod.calc()
+		cart_prod.save()
+		recalculate_final_price(self.cart)
+		return HttpResponseRedirect('/cart/')
+
+
+class CartView(CartMixin, View):
+	def get(self, request):
+		recalculate_final_price(self.cart)
+		return render(request, 'shop/cart.html', {'cart': self.cart})
+
 
