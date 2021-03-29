@@ -6,31 +6,43 @@
       <h1>Избранное</h1>
   </div>
 
-  <div class="cart-product">
+  <div class="cart-product" style="background-color: transparent !important;">
     {% if user.is_authenticated %}
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Наименование</th>
-          <th scope="col">Изображение</th>
-          <th scope="col">Цена</th>
-          <th scope="col">Действие</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for item in featured.products.all %}
+      {% if featured.products.count %}
+        <table class="table">
+          <thead>
             <tr>
-              <th scope="row">{{ item.title }}</th>
-              <td class="w-25"><img src="#" class="img-fluid"></td>
-              <td>{{ item.price }} ₽</td>
-              <td rowspan="2">
-                <a href="{% url 'delete_from_featured' product_id=item.id %}"><button class="btn btn-danger">Удалить из избранного</button></a>
-              </td>
+              <th scope="col">Наименование</th>
+
+              <th scope="col">Цена</th>
+              <th scope="col">Действие</th>
             </tr>
+          </thead>
+        </table>
+
+        {% for item in featured.products.all %}
+          <div class="cart-product">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="row">{{ item.title }}</th>
+                  <!--<td class="w-25"><img src="#" class="img-fluid"></td>-->
+                  <td>{{ item.price }} ₽</td>
+                  <td rowspan="2">
+                    <a href="{% url 'delete_from_featured' product_id=item.id %}"><button class="btn btn-danger">Удалить из избранного</button></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         {% endfor %}
-      </tbody>
-    </table>
-  </div>
+
+      {% else %}
+        <div class='empty-cart-message' >
+          <p>В избранном пока что ничего нет, предлагаем перейти
+            <a href="{% url 'catalogue' %}">в каталог</a></p>
+        </div>
+      {% endif %}
 
   {% else %}
   <div class='empty-cart-message' >
