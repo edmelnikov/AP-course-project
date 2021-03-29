@@ -5,6 +5,7 @@ from  django.contrib.auth import login, logout, authenticate, get_user_model
 from .forms import LoginForm, SignupForm
 from  django.contrib.auth.models import User
 from .mixins import *
+from datetime import datetime
 
 
 
@@ -129,6 +130,7 @@ class AddToCartView(CartMixin, View):
 		cart_prod, created = CartProd.objects.get_or_create(user=self.cart.owner, cart=self.cart,
 															object_id=product_id)
 		if created:
+			cart_prod.calc()
 			self.cart.products.add(cart_prod)
 		recalculate_final_price(self.cart)
 		return HttpResponseRedirect('/cart/')
@@ -150,7 +152,7 @@ class ChangeQuantityView(CartMixin, View):
 		product_id = kwargs.get('product_id')
 		product = Product.objects.get(id=product_id)
 		cart_prod = CartProd.objects.get(user=self.cart.owner, cart=self.cart, object_id=product.id)
-		print(request.POST)
+		#print(request.POST)
 		quantity = int(request.POST.get('quantity'))
 		cart_prod.quantity = quantity
 		cart_prod.calc()
@@ -161,7 +163,29 @@ class ChangeQuantityView(CartMixin, View):
 
 class CartView(CartMixin, View):
 	def get(self, request):
-		recalculate_final_price(self.cart)
 		return render(request, 'shop/cart.html', {'cart': self.cart})
 
 
+class AddToFeaturedView(FeaturedMixin, View):
+	def get(self, request, *args, **kwargs):
+		print(1)
+		product_id = kwargs.get('product_id')
+		print(1)
+		product = Product.objects.get(id=product_id)
+		print(1)
+		self.featured.products.add(product)
+		print(1)
+		return HttpResponseRedirect('/' + str(product_id))
+
+
+class DeleteFromFeatured(FeaturedMixin, View):
+	def get(self, request, *args, **kwargs):
+		product_id = kwargs.get('product_id')
+		product = Product.objects.get(id=product_id)
+		self.featured.products.remove(product)
+		return HttpResponseRedirect('/featured/')
+
+
+class FeaturedView(FeaturedMixin, View):
+	def get(self, request):
+		return render(request, 'shop/featured.html', {'featured': self.featured})

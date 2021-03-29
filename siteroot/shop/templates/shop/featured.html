@@ -1,0 +1,41 @@
+{%extends 'shop/base.html'%}
+{% block content %}
+<div class="layout-positioner">
+
+  <div class="stock-info">
+      <h1>Избранное</h1>
+  </div>
+
+  <div class="cart-product">
+    {% if user.is_authenticated %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Наименование</th>
+          <th scope="col">Изображение</th>
+          <th scope="col">Цена</th>
+          <th scope="col">Действие</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in featured.products.all %}
+            <tr>
+              <th scope="row">{{ item.title }}</th>
+              <td class="w-25"><img src="#" class="img-fluid"></td>
+              <td>{{ item.price }} ₽</td>
+              <td rowspan="2">
+                <a href="{% url 'delete_from_featured' product_id=item.id %}"><button class="btn btn-danger">Удалить из избранного</button></a>
+              </td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% else %}
+  <div class='empty-cart-message' >
+    <a href="#">Авторизуйтесь</a><p>, чтобы получить доступ к избранному</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

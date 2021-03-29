@@ -20,7 +20,6 @@ class Product(Model):
 
 class Review(Model):
 	product_key = ForeignKey(Product, on_delete=CASCADE)
-
 	author = CharField(max_length=50)
 	review_text = TextField()
 	created_at = DateTimeField(auto_now_add=True)
@@ -54,6 +53,14 @@ class Cart(Model):
 	products = ManyToManyField(CartProd, blank=True, related_name='related_products')
 	final_price = PositiveIntegerField(default=0)
 	for_unauthorized = BooleanField(default=False)
+
+	def __str__(self):
+		return str(self.id)
+
+
+class Featured(Model):
+	owner = ForeignKey(User, on_delete=CASCADE)
+	products = ManyToManyField(Product, blank=True)
 
 	def __str__(self):
 		return str(self.id)

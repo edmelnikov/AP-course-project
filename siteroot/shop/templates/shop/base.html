@@ -54,7 +54,7 @@
                     <li><a href="{% url 'cart' %}">Корзина</a></li>
                     <!--<li><a href="#" onClick="openmap()">Как проехать?</a></li>-->
                     {% if user.is_authenticated %}
-                        <li><a href="">Избранное</a></li>
+                        <li><a href="{% url 'featured' %}">Избранное</a></li>
                         <li><a href="{% url 'logout' %}">Выйти</a></li>
                     {% else %}
 

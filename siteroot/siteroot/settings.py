@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig'   # course project
 ]
 
+SESSION_SAVE_EVERY_REQUEST = False
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

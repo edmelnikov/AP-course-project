@@ -14,3 +14,13 @@ class CartMixin(View):
 				cart = Cart.objects.create(for_unauthorized=True)
 		self.cart = cart
 		return super().dispatch(request, *args, **kwargs)
+
+
+class FeaturedMixin(View):
+	def dispatch(self, request, *args, **kwargs):
+		if request.user.is_authenticated:
+			featured = Featured.objects.filter(owner=request.user).first()
+			if not featured:
+				featured = Featured.objects.create(owner=request.user)
+			self.featured = featured
+		return super().dispatch(request, *args, **kwargs)

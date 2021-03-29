@@ -40,6 +40,8 @@
                     </form>
                 </span>            
                 <a href="{% url 'add_to_cart' product_id=product.id %}" class="buy-button">Купить<br><b>{{ product.price }}</b></a>
+                <br>
+                <a href="{% url 'add_to_featured' product_id=product.id %}">В избранное</a>
             </div>
 
             <div class="comment-container">
