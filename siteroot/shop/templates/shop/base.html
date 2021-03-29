@@ -46,22 +46,26 @@
     <body>
         <div class="navibar-container">
             <div class="layout-positioner">
-                <div class="logo">myStore</div>
+                <div class="logo"><a href="{% url 'index' %}" style='color: white; text-decoration: none;'>myStore</a></div>
                 <div class="logo-since">since 2019</div>
                 <ul class="navibar">
                     <li><a href="{% url 'index' %}">Главная</a></li>
                     <li><a href="{% url 'catalogue' %}">Каталог</a></li>
-
+                    <li><a href="{% url 'cart' %}">Корзина</a></li>
+                    <!--<li><a href="#" onClick="openmap()">Как проехать?</a></li>-->
                     {% if user.is_authenticated %}
                         <li><a href="">Избранное</a></li>
                         <li><a href="{% url 'logout' %}">Выйти</a></li>
                     {% else %}
+
                         <li><a href="{% url 'login' %}">Войти</a></li>
                         <li><a href="{% url 'signup' %}">Зарегистрироваться</a></li>
                     {% endif %}
 
-                    <li><a href="#" onClick="openmap()">Как проехать?</a></li>
+
+
                 </ul>
+
             </div>
         </div>
 

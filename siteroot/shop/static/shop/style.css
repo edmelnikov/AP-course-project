@@ -40,6 +40,7 @@ html {
     margin-top: -17px;
     margin-left: -8px;
     margin-right: -8px;
+
 }
 .navibar {
     list-style: none;
@@ -451,6 +452,7 @@ table a {
 }
 */
 
+/* Логин и регистрация */
 form.login  {
     margin-top: 100px;
 }
@@ -466,8 +468,6 @@ form.login  table {
 }
 
 .register-login-form-container  {
-
-
 }
 
 .login-button {
@@ -501,10 +501,43 @@ form.login  table {
     margin-top: 25px;
 
 }
-
 .submit-review-container {
-
     text-align: center;
     margin-top: 25px;
     margin-bottom: 50px;
 }
+
+/* стили для корзины */
+.empty-cart-message {
+
+    text-align: center;
+    display: block;
+    width: 1000px;
+    height: 50px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 24px;
+    background-color: lightgray;
+}
+
+.cart-product {
+    border-radius: 10px;
+    background-color: white;
+
+}
+
+.cart-product table {
+    margin-top: 50px;
+    width: 1000px;
+}
+
+.cart-product table td {
+    text-align: center;
+}
+
+.cart-total-price {
+    margin-top: 25px;
+    text-align: center;
+}
+

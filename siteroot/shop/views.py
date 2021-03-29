@@ -7,7 +7,6 @@ from  django.contrib.auth.models import User
 from .mixins import *
 
 
-# TODO: добавить ошибку 404, добавить ошибку при попытке запостить пустой отзыв
 
 
 def index(request):
