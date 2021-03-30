@@ -13,14 +13,15 @@
     </div>
     <div class="stock">
         {% for product in products %}
-
-        <div class="item">
-            <img src="img/item1.png" alt="{{ product.title }}" height="150" width="150">
-            <a href="{% url 'product_by_id' product.id %}" class="name">{{ product.title }}</a>
-            <p class="price"><b>{{ product.price }}₽</b></p>
-        </div>
-
-
+            <div class="item">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.title }}" height="150" width="150">
+                {% else %}
+                    <img src="" alt="{{ product.title }}" height="150" width="150">
+                {% endif %}
+                <a href="{% url 'product_by_id' product.id %}" class="name">{{ product.title }}</a>
+                <p class="price"><b>{{ product.price }}₽</b></p>
+            </div>
         {% endfor %}
     </div>
 </div>

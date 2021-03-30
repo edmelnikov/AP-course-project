@@ -559,3 +559,6 @@ form.login  table {
     text-align: center;
 }
 
+.product-img {
+    border-radius: 10px;
+}

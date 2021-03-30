@@ -15,7 +15,7 @@ class Product(Model):
 	color = CharField(max_length=50, default=None)
 	description = TextField(max_length=2048)
 	materials = CharField(max_length=50)
-
+	image = models.ImageField(blank=True, null=True)
 	def __str__(self):  # Blog.objects.all() returns the title
 		return str(self.title)
 

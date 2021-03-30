@@ -6,14 +6,12 @@
       <h1>Корзина</h1>
   </div>
 
-
   {% if cart.products.count %}
     <div class="cart-product" style="background-color: transparent !important;">
       <table>
         <thead>
           <tr>
             <th scope="col">Наименование</th>
-
             <th scope="col">Цена</th>
             <th scope="col">Кол-во</th>
             <th scope="col">Общая цена</th>
@@ -26,24 +24,23 @@
       <div class="cart-product">
         <table class="table">
           <tbody>
-
-                <tr>
-                  <th scope="row">{{ item.get_product.title }}</th>
-                  <!--<td class="w-25"><img src="#" class="img-fluid"></td>-->
-                  <td>{{ item.get_product.price }} ₽</td>
-                  <td>
-                    <form action="{% url 'change_quantity' product_id=item.object_id %}" method="POST">
-                      {% csrf_token %}
-                      <input type="number" class="form-control" name="quantity" style="width: 70px;" min="1" value="{{ item.quantity }}">
-                      <br>
-                      <input type="submit" class="btn btn-primary" value="Изменить кол-во">
-                    </form>
-                  </td>
-                    <td>{{ item.total_price }} ₽</td>
-                  <td rowspan="2">
-                    <a href="{% url 'delete_from_cart' product_id=item.object_id %}"><button class="btn btn-danger">Удалить из корзины</button></a>
-                  </td>
-                </tr>
+            <tr>
+              <th scope="row">{{ item.get_product.title }}</th>
+              <!--<td class="w-25"><img src="#" class="img-fluid"></td>-->
+              <td>{{ item.get_product.price }} ₽</td>
+              <td>
+                <form action="{% url 'change_quantity' product_id=item.object_id %}" method="POST">
+                  {% csrf_token %}
+                  <input type="number" class="form-control" name="quantity" style="width: 70px;" min="1" value="{{ item.quantity }}">
+                  <br>
+                  <input type="submit" class="btn btn-primary" value="Изменить кол-во">
+                </form>
+              </td>
+                <td>{{ item.total_price }} ₽</td>
+              <td rowspan="2">
+                <a href="{% url 'delete_from_cart' product_id=item.object_id %}"><button class="btn btn-danger">Удалить из корзины</button></a>
+              </td>
+            </tr>
     <!--
 
                 <tr>
@@ -54,7 +51,7 @@
                 </tr>
     -->
           </tbody>
-        </table>
+        </table> <!-- Знаю, использовать таблицы таким образом было далеко не самым умным решением, но мне лень переделывать -->
       </div>
     {% endfor %}
     <div class="cart-total-price">
