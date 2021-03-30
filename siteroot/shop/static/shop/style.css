@@ -329,12 +329,28 @@ html {
     height: 50px;
     border-radius: 10px;
     padding: 5px 25px;  
-    color: white;
+    color: white !important;
+    margin-top: 10px;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 25px;
+    text-decoration: none;
+}
+
+.favourites-button {
+    display: block;
+    background-color: grey;
+    width: 200px;
+    height: 20px;
+    border-radius: 10px;
+    padding: 5px 25px;
+    color: white !important;
     margin-top: 50px;
     vertical-align: middle;
     text-align: center;
     margin-left: 25px;
     text-decoration: none;
+    margin-top: -15px;
 }
 
 .comment-container {
@@ -528,7 +544,7 @@ form.login  table {
 }
 
 .cart-product table {
-    margin-top: 50px;
+    margin-top: 25px;
     width: 1000px;
 }
 
@@ -536,8 +552,13 @@ form.login  table {
     text-align: center;
 }
 
+
+
 .cart-total-price {
     margin-top: 25px;
     text-align: center;
 }
 
+.product-img {
+    border-radius: 10px;
+}

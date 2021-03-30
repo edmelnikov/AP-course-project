@@ -11,7 +11,7 @@ from datetime import datetime
 
 
 def index(request):
-	if request.user.is_authenticated:  # проверка на аутентификацию пользователя
+	if request.user.is_authenticated:
 		name = request.user.username
 	else:
 		name = 'Аноним'

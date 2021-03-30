@@ -8,19 +8,15 @@
         </div>
 
         {% if not user.is_authenticated %}
-        <form class="signup login" method="POST">
-            {% csrf_token %}
-            <table>{{ form }}</table> <!-- Тут надо поменять размеры полей -->
-
-            <input class="login-button" type="submit" value="Зарегистрироваться"/>
-        </form>
-
+            <form class="signup login" method="POST">
+                {% csrf_token %}
+                <table>{{ form }}</table> <!-- Тут надо поменять размеры полей -->
+                <input class="login-button" type="submit" value="Зарегистрироваться"/>
+            </form>
         {% else %}
-        <p>Как ты сюда попал, ты же уже вошел</p>
+            <p>Как ты сюда попал, ты же уже вошел</p>
         {% endif %}
     </div>
-
-    </div>
-</div>>
+</div>
 
 {%endblock%}
